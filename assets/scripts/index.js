@@ -14,12 +14,34 @@ login.addEventListener('click', () => {
     transactionArea.classList.remove('d-none')
 })
 
-//deposti btn handler
+//deposit btn handler
 depositBtn.addEventListener('click', () => {
-    const depositAmount = parseFloat(depositInput.value)
+    let depositAmount = parseFloat(depositInput.value)
     let currentDeposit = parseFloat(depositAmmount.textContent)
+
     let totalDeposit = depositAmount + currentDeposit
+    const currentBalanceNum = parseFloat(balanceAmmount.textContent)
+    const totalBalance = depositAmount + currentBalanceNum
+
+    balanceAmmount.textContent = totalBalance
     depositAmmount.textContent = totalDeposit
     depositInput.value = ""
     depositInput.focus()
+})
+
+withdrawBtn.addEventListener('click', () => {
+    const withdrawAmount = parseFloat(withdrawInput.value)
+    const currentWithdraw = parseFloat(withdrawAmmount.textContent)
+
+    const totalWithdraw = withdrawAmount + currentWithdraw
+
+    const currentBalanceNum = parseFloat(balanceAmmount.textContent)
+    const totalBalance = currentBalanceNum - withdrawAmount
+
+    withdrawAmmount.textContent = totalWithdraw
+    balanceAmmount.textContent = totalBalance
+
+    withdrawInput.value = ""
+    withdrawInput.focus()
+
 })
